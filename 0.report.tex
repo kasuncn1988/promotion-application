@@ -1,0 +1,361 @@
+\documentclass[a4paper,11pt]{report}	
+
+\usepackage{titlesec}
+\renewcommand{\chaptername}{Section}
+
+\usepackage{minitoc}
+
+\usepackage{palatino}
+
+\usepackage[utf8]{inputenc}
+
+\emergencystretch=\maxdimen
+    \hyphenpenalty=10000
+    \hbadness=10000
+\usepackage{geometry}
+ \geometry{
+ right=30mm,
+ bottom=20mm,
+ left=30mm,
+ top=20mm,
+ }
+ \usepackage{longtable}
+ \usepackage{lineno}
+ \usepackage[hidelinks]{hyperref}
+
+ \usepackage{url}
+\urlstyle{same}
+
+ \usepackage{graphicx}
+ 
+
+\usepackage{pgfplots}
+
+
+\pgfplotsset{width=0.7\textwidth,compat=1.9}
+
+ \usepackage{tikz}
+% \usepackage{xcolor}
+ \usepackage{rotating}
+
+
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+ \usepackage{longtable}
+ 
+ \usepackage{pdflscape}
+ 
+
+\usepackage[square,numbers]{natbib}
+\bibliographystyle{ieeetr}
+
+ \usepackage{pgfgantt}
+ 
+ \usepackage{rotating}
+ 
+ \usepackage{datetime}
+ \usepackage{tablefootnote}
+
+\newdateformat{monthyeardate}{%
+  \monthname[\THEMONTH], \THEYEAR}
+  
+  \usepackage{xcolor}
+  
+  
+
+\usepackage{parskip}
+
+%\usepackage{tocbibind}
+\usepackage[toc,page]{appendix}
+\usepackage{pdfpages}
+ \usepackage{ragged2e}
+ 
+ 
+ 
+ 
+ \usepackage{fancyhdr}
+
+ 
+ 
+ 
+ 
+ \pagestyle{fancy}
+ \fancyhf{} % Clear all header and footer fields
+ 
+ \fancyhead[L]{\nouppercase{\leftmark}} % Chapter title at the bottom center
+ \fancyfoot[R]{Page ~ \thepage} % Chapter - Page number at the bottom right
+  \fancyfoot[L]{\scriptsize{Kasun Nandapala}}
+ \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+ 
+ \renewcommand{\headrulewidth}{0.1pt}
+  \renewcommand{\footrulewidth}{0.1pt}
+ 
+ 
+ 
+ \newcommand{\appendixpagenumbering}{
+  \break
+  \pagenumbering{arabic}
+  \renewcommand{\thepage}{\thesection-\arabic{page}}
+}
+
+
+
+
+\newcounter{DocCounter}
+
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+	\setcounter{DocCounter}{0} % Reset the custom counter
+	\oldsection{#1}%
+}
+
+\newcommand{\Doc}[1]
+{
+	\topskip0pt
+	\vspace*{\fill}
+	\stepcounter{DocCounter} % Increment the custom counter
+	\begin{center}
+		\Large \textbf{\thesection(\arabic{DocCounter})} % Display the subsection and custom counter
+	\end{center}
+	\vspace*{5mm} % Adjust spacing as needed
+	\begin{center}
+		\Large #1\\
+	\end{center}
+	\vspace*{50mm}
+	\begin{center}
+		\normalsize{\textit{Please Refer the Next Page}}
+	\end{center}
+	\vfill
+	\newpage
+}
+
+                
+                
+\newcounter{subDocCounter}
+\let\oldsubsection\subsection
+\renewcommand{\subsection}[1]{%
+	\setcounter{subDocCounter}{0} % Reset the custom counter
+	\oldsubsection{#1}%
+}
+
+\newcommand{\subDoc}[1]
+{
+	\topskip0pt
+	\vspace*{\fill}
+	\stepcounter{subDocCounter} % Increment the custom counter
+	\begin{center}
+		\Large \textbf{\thesubsection(\arabic{subDocCounter})} % Display the subsection and custom counter
+	\end{center}
+	\vspace*{5mm} % Adjust spacing as needed
+	\begin{center}
+		\Large #1\\
+	\end{center}
+	\vspace*{50mm}
+	\begin{center}
+		\normalsize{\textit{Please Refer the Next Page}}
+	\end{center}
+	\vfill
+	\newpage
+}
+
+                
+
+            
+            
+%		 \newcommand{\subsubDoc}[1]
+%		 {
+%		 	\topskip0pt
+%		 	\vspace*{\fill}
+%		 	\begin{center}
+%		 		\Large \textbf{#1}\\
+%		 	\end{center}
+%		 	\vspace*{50mm}\begin{center}\normalsize{{\textit{Please Refer the Next Page}}}\end{center}\vfill  \par \newpage
+%		 } 
+%                
+                
+    \usepackage{eso-pic}
+
+\usepackage{hyperref}
+
+
+ 
+
+
+
+\usepackage{tikzpagenodes}
+
+\usepackage{fontawesome}
+
+\usepackage{transparent}
+
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{longtable}
+
+\usepackage{atbegshi}
+
+
+
+
+
+
+
+
+ \AddToShipoutPicture{%
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=north east,inner sep=0pt,yshift=1.5cm,xshift=2cm](box\thepage) at (current page text area.north east){\hyperlink{page.i}
+			{\transparent{0.6} {\includegraphics[width=1cm]{home.jpeg}}}};
+\end{tikzpicture}}
+
+
+\titleformat{\section}[display]
+{\newpage\vspace*{\fill}\normalfont\LARGE\bfseries} % Format for the section number and title
+{\thesection} % Section number
+{5pt} % Reduced space between number and title
+{\LARGE} % Format for the section title, with vertical space
+[\vspace*{\fill}\newpage] % Vertical space after the title and start a new page
+
+
+
+% Define a custom subsection style
+\titleformat{\subsection}[display]
+{\newpage\vspace*{\fill}\normalfont\Large\bfseries} % Format for the section number and title
+{\thesubsection} % Section number
+{5pt} % Reduced space between number and title
+{\Large} % Format for the section title, with vertical space
+[\vspace*{\fill}\newpage] % Vertical space after the title and start a new page
+
+\titlespacing*{\subsection}{0pt}{\fill}{0pt} % Vertical space before the section title
+
+
+%  \usepackage{tocloft}
+%\renewcommand{\cftsecpagefont}{\thechapter-\arabic{page}}
+%\renewcommand{\cftsubsecpagefont}{\thechapter-\arabic{page}}
+
+\dominitoc
+                
+\begin{document}
+
+
+
+
+
+\renewcommand{\baselinestretch}{2}
+
+\begin{titlepage}
+
+
+
+
+
+
+
+	\begin{center}
+		\vspace*{2cm}
+
+		\Large{
+			\textbf{\uppercase{Application for the promotion to the post of Associate Professor }}}\\ \vspace{1cm}
+		\large{\uppercase{University of Vocational Technology}}\\ \vspace{3cm}
+		%        \includegraphics[width=0.2\textwidth]{photos/logo}
+		\vfill
+		\centering
+		\large{
+			Manamendra Patabendige Kasun Chinthaka Nandapala\\ \vspace{1cm}
+			%   AM 14866\\
+			\normalsize{Senior Lecturer II, Department of Construction Technology\\}
+		}
+		\vspace{2cm}
+		% \includegraphics[width=0.7\textwidth]{photos/bamboo.jpg}
+		\monthyeardate\today
+		% \vfill
+
+
+		%\vspace{1.0cm}
+
+
+
+	\end{center}
+
+\end{titlepage}
+
+
+
+
+\renewcommand{\baselinestretch}{1.5}
+
+
+
+\pagenumbering{roman}
+
+
+% \addcontentsline{toc}{chapter}{Table of Contents}
+\mtcaddchapter[Table of Contents]
+
+
+
+\doublespacing
+\tableofcontents
+\label{toc}
+
+
+
+
+
+
+%\listoffigures
+
+\clearpage
+
+%\listoffigures
+%\listoftables
+
+%\clearpage
+
+%\AddToShipoutPicture{%
+%\begin{tikzpicture}[remember picture,overlay]
+%  \node[anchor=north east,inner sep=0pt,yshift=2cm,xshift=1cm](box\thepage) at (current page text area.north east){\hyperlink{page.i}
+%             {\transparent{0.6} {\includegraphics[width=1cm]{Photos/home.jpeg}}}};
+%\end{tikzpicture}}
+
+
+
+\pagenumbering{arabic}
+
+%\renewcommand{\thepage}{\thechapter-\arabic{page}}
+%\titleformat{\chapter}[display]
+%{\normalfont\huge\bfseries} % Format for the chapter number and title
+%{\chaptertitlename\ \thechapter} % Chapter number
+%{2pt} % Reduced space between number and title
+%{\Huge} % Format for the chapter title, with vertical space
+%[\vspace*{\fill}\newpage] % Vertical space after the title and start a new page
+%
+%\titlespacing*{\chapter}{0pt}{\fill}{0pt} % Vertical space before the chapter title
+
+% Define a custom section style
+
+
+
+
+%\renewcommand{\thepage}{Ex - \arabic{page}}
+\chapter*{Summary of the Application}
+\mtcaddchapter[Summary of the Application]
+%\addcontentsline{toc}{chapter}{Summary}
+%\includepdf[pages={1-},pagecommand={}]{summary.pdf}\label{summary}
+
+\input{1/1}
+
+
+\input{2/2}
+
+\input{3/3}
+
+
+
+
+\end{document}
